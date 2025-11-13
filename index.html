@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <!-- Tailwind CSSを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Interフォントを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome (アイコン用) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Interフォントをデフォルトに設定 */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* スムーズスクロール */
+            scroll-behavior: smooth;
+        }
+        /* グラデーション背景のアニメーション */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* カードのホバーエフェクト */
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* リンクアイコンのホバーエフェクト */
+        .link-icon:hover {
+            transform: scale(1.1);
+            color: #60a5fa; /* Tailwind blue-400 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- ヘッダー -->
+    <header class="fixed w-full bg-gray-900 bg-opacity-80 backdrop-blur-md shadow-lg z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white hover:text-blue-300 transition duration-300">MyProfile</a>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="hover:text-blue-400 transition duration-300">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a>
+                <a href="#links" class="hover:text-blue-400 transition duration-300">Links</a>
+                <a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <!-- モバイルメニュー -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 bg-gray-900 bg-opacity-90">
+            <a href="#about" class="block py-2 hover:text-blue-400 transition duration-300 mobile-menu-link">About</a>
+            <a href="#projects" class="block py-2 hover:text-blue-400 transition duration-300 mobile-menu-link">Projects</a>
+            <a href="#links" class="block py-2 hover:text-blue-400 transition duration-300 mobile-menu-link">Links</a>
+            <a href="#contact" class="block py-2 hover:text-blue-400 transition duration-300 mobile-menu-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="pt-16"> <!-- ヘッダーの高さ分（py-4 = 1rem * 2 + text-2xl）-->
+
+        <!-- ヒーローセクション -->
+        <section id="hero" class="animated-gradient text-white min-h-screen flex items-center justify-center text-center p-4">
+            <div class="bg-gray-900 bg-opacity-60 p-8 md:p-12 rounded-lg backdrop-blur-sm shadow-2xl max-w-2xl">
+                <!-- 画像プレースホルダー: https://placehold.co/ を使用 -->
+                <img src="https://placehold.co/150x150/60a5fa/ffffff?text=Icon" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x150/60a5fa/ffffff?text=Error'" 
+                     alt="プロフィール画像" 
+                     class="w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto mb-6 border-4 border-blue-400 shadow-lg">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">YOUR NAME</h1>
+                <p class="text-xl md:text-2xl text-gray-200">Software Developer / Content Creator / Tech Enthusiast</p>
+            </div>
+        </section>
+
+        <!-- About セクション -->
+        <section id="about" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center mb-10 text-blue-400">About Me</h2>
+                <p class="text-lg text-gray-300 leading-relaxed text-center">
+                    はじめまして！[あなたの名前]です。
+                    普段は[あなたの職業や専門分野、例：Web開発者]として働いています。
+                    [あなたの技術スタックや興味、例：ReactやPython]を使った開発が得意で、特に[具体的な興味分野、例：インタラクティブなUIの構築]に情熱を持っています。
+                    このページでは、私のプロジェクトやリンクを紹介しています。
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects セクション -->
+        <section id="projects" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 text-blue-400">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- プロジェクトカード 1 -->
+                    <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300">
+                        <!-- 画像プレースホルダー: https://placehold.co/ を使用 -->
+                        <img src="https://placehold.co/600x400/34d399/1f2937?text=Project+1" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/34d399/1f2937?text=Error'" 
+                             alt="プロジェクト1の画像" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3">プロジェクト名 1</h3>
+                            <p class="text-gray-400 mb-4">ここにプロジェクトの簡単な説明文を入れます。使用した技術なども。</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium transition duration-300">詳細を見る &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- プロジェクトカード 2 -->
+                    <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300">
+                        <!-- 画像プレースホルダー: https://placehold.co/ を使用 -->
+                        <img src="https://placehold.co/600x400/fbbf24/1f2937?text=Project+2" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/fbbf24/1f2937?text=Error'" 
+                             alt="プロジェクト2の画像" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3">プロジェクト名 2</h3>
+                            <p class="text-gray-400 mb-4">ここにプロジェクトの簡単な説明文を入れます。使用した技術なども。</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium transition duration-300">詳細を見る &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- プロジェクトカード 3 -->
+                    <div class="project-card bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300">
+                        <!-- 画像プレースホルダー: https://placehold.co/ を使用 -->
+                        <img src="https://placehold.co/600x400/f87171/1f2937?text=Project+3" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/f87171/1f2937?text=Error'" 
+                             alt="プロジェクト3の画像" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3">プロジェクト名 3</h3>
+                            <p class="text-gray-400 mb-4">ここにプロジェクトの簡単な説明文を入れます。使用した技術なども。</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium transition duration-300">詳細を見る &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Links セクション -->
+        <section id="links" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-bold text-center mb-12 text-blue-400">My Links</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+
+                    <!-- GitHub -->
+                    <a href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-all duration-300 link-icon text-center">
+                        <i class="fab fa-github text-5xl md:text-6xl"></i>
+                        <p class="text-center mt-2 text-sm">GitHub</p>
+                    </a>
+
+                    <!-- Note -->
+                    <a href="YOUR_NOTE_URL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-all duration-300 link-icon text-center">
+                        <!-- note.comのアイコンはFont Awesomeにないため、代替アイコン（例：記事） -->
+                        <i class="fas fa-file-alt text-5xl md:text-6xl"></i>
+                        <p class="text-center mt-2 text-sm">note</p>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a href="YOUR_X_URL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-all duration-300 link-icon text-center">
+                        <i class="fab fa-twitter text-5xl md:text-6xl"></i>
+                        <p class="text-center mt-2 text-sm">X (Twitter)</p>
+                    </a>
+                    
+                    <!-- LinkedIn (任意) -->
+                    <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-all duration-300 link-icon text-center">
+                        <i class="fab fa-linkedin text-5xl md:text-6xl"></i>
+                        <p class="text-center mt-2 text-sm">LinkedIn</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact セクション -->
+        <section id="contact" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <h2 class="text-3xl font-bold text-center mb-8 text-blue-400">Get In Touch</h2>
+                <p class="text-lg text-gray-300 mb-10">
+                    お仕事のご依頼やご相談、その他何かありましたらお気軽にご連絡ください。
+                </p>
+                <a href="mailto:YOUR_EMAIL@example.com" 
+                   class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    Send me an Email
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 YOUR NAME. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // モバイルメニューのトグル機能
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // アイコンを切り替え (bars <-> times)
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            } else {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            }
+        });
+
+        // メニューリンクをクリックしたらメニューを閉じる
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+</body>
+</html>
